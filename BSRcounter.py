@@ -7,7 +7,7 @@ content = ttk.Frame(root,padding="0 0 300 0")
 content.grid(column=0,row=0,sticky=(N,W,E,S))
 content.columnconfigure(0,weight=3)
 content.rowconfigure(0,weight=3)
-#mainframe = ttk.Frame(root)
+
 
 #[BlankShells, LiveShells]
 ShellCounts = [0,0]
@@ -43,15 +43,6 @@ def ResetChkBtns():
             child.deselect()
 
 
-#TODO: All the buttons will need to have their .grid parameters messed with to make them align correctly.
-
-#------
-
-
-#include a label "Live" and the value in LiveShells
-
-
-
 ttk.Button(content, text="+", command=lambda:UpdateCounter("Live","add")).grid(column=3,row=2,sticky=(W))
 #Above button adds a button that uses Update Counter function to increment the Live counter by 1
 
@@ -60,7 +51,7 @@ ttk.Button(content, text="-", command=lambda:UpdateCounter("Live","subtract")).g
 
 
 
-#include a label of "Blank" and the value in BlankShells
+#include a label of "Blank" and the value in BlankShells (and the same for LiveShells)
 blankLabel = ttk.Label(content,text="Blanks").grid(column=1,row=1,sticky=(W))
 blankCounter = ttk.Label(content,textvariable=blank).grid(column=2,row=1,padx=20)
 liveLabel = ttk.Label(content,text="Live Rounds").grid(column=1,row=2,sticky=(W))
@@ -79,9 +70,6 @@ ttk.Button(content, text="-", command=lambda:UpdateCounter("Blank","subtract")).
 #new frame for the checkboxes because it looks weird otherwise
 checkBoxContent = ttk.Frame(root,padding="10")
 checkBoxContent.grid(column=0,row=4,sticky=(N,W,E,S))
-#checkBoxContent.columnconfigure(0,weight=1)
-#checkBoxContent.rowconfigure(0,weight=1)
-#creating 
 
 
 ttk.Label(checkBoxContent,text="Blanks").grid(column=1,row=3,padx=10)
@@ -90,7 +78,7 @@ for i in range(8):
     var = IntVar()  # Variable to store the state of the checkbox
     cb = Checkbutton(checkBoxContent, text=str(i+1), variable=var)
     cb.grid(row=3, column=i+2,sticky=(W),padx=7)  # Place the checkbox in the frame
-#Adding
+
 for i in range(8):
     var = IntVar()  # Variable to store the state of the checkbox
     cb = Checkbutton(checkBoxContent, text=str(i+1), variable=var)
@@ -98,6 +86,5 @@ for i in range(8):
 
 ttk.Button(checkBoxContent,text="Reset",command=lambda:ResetChkBtns()).grid(column=0,row=3)
     
-print(str(ShellCounts[0]) + " " + str(ShellCounts[1]))
-#ttk.Button(root, text="get()",command=get).grid(column=5,row=1)
+
 root.mainloop()
