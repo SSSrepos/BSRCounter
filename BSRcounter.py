@@ -16,6 +16,12 @@ live = StringVar()
 blank.set("0")
 live.set("0")
 
+def ResetCounter():
+    blank.set("0")
+    live.set("0")
+    ShellCounts[0] = 0
+    ShellCounts[1] = 0
+
 #Increment/decrement either global variable  
 def UpdateCounter(ShellVar,operation,):
     global ShellCounts
@@ -64,6 +70,7 @@ ttk.Button(content, text="+", command=lambda:UpdateCounter("Blank","add")).grid(
 ttk.Button(content, text="-", command=lambda:UpdateCounter("Blank","subtract")).grid(column=4,row=1,sticky=(E))
 #Above button adds a button that uses Update Counter function to decrement the Blank counter by 1
 
+ttk.Button(content, text="Reset", command=lambda:ResetCounter()).grid(column=5,row=2,padx=20)
 
 
 
